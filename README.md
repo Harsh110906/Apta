@@ -1,6 +1,7 @@
 # 🚀 Apta — Learn, Rank, Get Hired.
 
 **[🌐 View Live Demo on Vercel](https://apta-ten.vercel.app/)**
+**[📺 Watch Full Demo Video](https://drive.google.com/file/d/1buoFTYUufKFMoPFyEoKH-ODABCNRfcG6/view?usp=sharing)**
 
 Apta is a two-sided, merit-based talent and hiring platform that combines Duolingo-like daily learning, LinkedIn-like professional identity, and Bumble-like recruiter discovery — all powered by a transparent ranking engine where skill is the only currency.
 
