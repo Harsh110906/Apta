@@ -1,17 +1,19 @@
+"use client";
+
 import { MotionWrapper } from "@/components/ui/MotionWrapper";
-import { MOCK_CANDIDATES } from "@/data/candidates";
+import { useSearchStore } from "@/features/search/useSearchStore";
 import { Button } from "@/components/ui/Button";
 import { Mail, CheckCircle2 } from "lucide-react";
 
 export default function RecruiterPipeline() {
-  const shortlisted = MOCK_CANDIDATES.filter(c => c.domain === "Frontend Engineering");
+  const { shortlisted } = useSearchStore();
 
   return (
     <div className="flex-1 p-6 md:p-10 max-w-6xl mx-auto w-full">
       <MotionWrapper animation="fade-up">
         <div className="flex items-center justify-between mb-8">
           <div>
-            <h1 className="text-3xl font-bold mb-1">Frontend Engineering Pipeline</h1>
+            <h1 className="text-3xl font-bold mb-1">Recruitment Pipeline</h1>
             <p className="text-text-secondary">Manage your shortlisted candidates and AI outreach.</p>
           </div>
           <Button>Generate AI Emails</Button>
@@ -27,19 +29,19 @@ export default function RecruiterPipeline() {
           </div>
 
           {shortlisted.map((candidate, idx) => (
-            <MotionWrapper key={candidate.id} animation="fade-up" delay={idx * 100}>
+            <MotionWrapper key={candidate.candidate_id} animation="fade-up" delay={idx * 100}>
               <div className="bg-bg-secondary p-4 rounded-xl border border-border shadow-sm hover:shadow-md transition-shadow cursor-pointer">
                 <div className="flex justify-between items-start mb-3">
-                  <div className="font-bold">{candidate.name}</div>
+                  <div className="font-bold">{candidate.uiPresentationMetadata?.name || 'Candidate'}</div>
                   <div className="text-xs font-bold text-sky-500 bg-sky-500/10 px-2 py-1 rounded-md">
-                    {candidate.rank}
+                    {candidate.uiPresentationMetadata?.visualRankTier || 'Unranked'}
                   </div>
                 </div>
-                <p className="text-xs text-text-secondary mb-4 line-clamp-1">{candidate.headline}</p>
+                <p className="text-xs text-text-secondary mb-4 line-clamp-1">{candidate.uiPresentationMetadata?.domain || 'General'}</p>
                 <div className="flex items-center justify-between">
                   <div className="flex -space-x-2">
-                    {candidate.skills.slice(0, 3).map((s, i) => (
-                      <div key={i} className="w-6 h-6 rounded-full bg-emerald/10 border border-emerald/20 flex items-center justify-center text-[10px] text-emerald" title={s}>
+                    {(candidate.uiPresentationMetadata?.verifiedSkills || []).slice(0, 3).map((s: any, i: number) => (
+                      <div key={i} className="w-6 h-6 rounded-full bg-emerald/10 border border-emerald/20 flex items-center justify-center text-[10px] text-emerald" title={s.name}>
                         <CheckCircle2 className="w-3 h-3" />
                       </div>
                     ))}

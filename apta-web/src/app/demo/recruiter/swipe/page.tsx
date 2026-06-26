@@ -4,20 +4,36 @@ import { useState, useEffect, useCallback } from "react";
 import { useRouter } from "next/navigation";
 import { MotionWrapper } from "@/components/ui/MotionWrapper";
 import { Button } from "@/components/ui/Button";
-import { MOCK_CANDIDATES } from "@/data/candidates";
 import { ThumbsUp, X, CheckCircle2, Keyboard } from "lucide-react";
 import { RankBadge } from "@/components/ui/RankBadge";
+import { useSearchStore } from "@/features/search/useSearchStore";
 
 export default function RecruiterSwipe() {
   const router = useRouter();
   const [currentIndex, setCurrentIndex] = useState(0);
   const [animating, setAnimating] = useState<"left" | "right" | null>(null);
 
-  const candidates = MOCK_CANDIDATES.filter(c => c.domain === "Frontend Engineering" || c.domain === "Full Stack Engineering");
+  const { rankedResults, addToShortlist } = useSearchStore();
+
+  const candidates = rankedResults.map(c => ({
+    originalCandidate: c,
+    name: c.uiPresentationMetadata?.name || 'Candidate',
+    rank: (c.uiPresentationMetadata?.visualRankTier || 'Unranked') as "Elite" | "Diamond" | "Platinum" | "Gold" | "Silver" | "Unranked",
+    headline: c.uiPresentationMetadata?.domain || 'General',
+    skills: (c.uiPresentationMetadata?.verifiedSkills || []).map((s: any) => s.name),
+    points: Math.floor(c.score * 100),
+    streak: c.uiPresentationMetadata?.pseudoStreak || 0,
+    certifications: [] as any[],
+    reasoning: c.reasoning
+  }));
 
   const handleSwipe = useCallback((direction: "left" | "right") => {
     if (animating) return;
     setAnimating(direction);
+    
+    if (direction === "right" && candidates[currentIndex]) {
+      addToShortlist(candidates[currentIndex].originalCandidate);
+    }
     
     setTimeout(() => {
       setAnimating(null);
@@ -27,9 +43,8 @@ export default function RecruiterSwipe() {
         router.push("/demo/recruiter/pipeline");
       }
     }, 400);
-  }, [animating, candidates.length, currentIndex, router]);
+  }, [animating, candidates, currentIndex, router, addToShortlist]);
 
-  // Keyboard arrow support
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === "ArrowLeft") handleSwipe("left");
@@ -38,6 +53,15 @@ export default function RecruiterSwipe() {
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [handleSwipe]);
+
+  if (candidates.length === 0) {
+    return (
+      <div className="flex-1 flex flex-col items-center justify-center p-6 bg-grid">
+        <h2 className="text-xl font-bold mb-4">No candidates to review</h2>
+        <Button onClick={() => router.push("/demo/recruiter/setup")}>Go back to Search</Button>
+      </div>
+    );
+  }
 
   if (currentIndex >= candidates.length) return null;
 
@@ -55,7 +79,7 @@ export default function RecruiterSwipe() {
         </Button>
       </div>
 
-      <div className="relative w-full max-w-md h-[550px]">
+      <div className="relative w-full max-w-md h-[600px]">
         {/* Next Card Background */}
         {currentIndex < candidates.length - 1 && (
           <div className="absolute inset-0 bg-bg-secondary rounded-3xl border border-border shadow-md scale-95 translate-y-4 opacity-50 z-0" />
@@ -71,7 +95,7 @@ export default function RecruiterSwipe() {
           <div className="p-6 border-b border-border bg-bg-tertiary">
             <div className="flex justify-between items-start mb-4">
               <div className="w-16 h-16 rounded-full bg-gradient-to-tr from-sky-400 to-blue-600 flex items-center justify-center text-white text-xl font-bold shadow-sm shrink-0">
-                {candidate.name.split(' ').map(n => n[0]).join('')}
+                {candidate.name.split(' ').map((n: string) => n[0]).join('')}
               </div>
               <RankBadge rank={candidate.rank} size="md" />
             </div>
@@ -80,10 +104,18 @@ export default function RecruiterSwipe() {
           </div>
 
           <div className="p-6 flex-1 overflow-y-auto">
+            
+            <div className="mb-6">
+              <div className="text-sm font-semibold text-text-muted uppercase tracking-wider mb-2">Engine Reasoning</div>
+              <div className="text-sm text-text-secondary bg-sky-500/10 border border-sky-500/20 p-3 rounded-xl italic">
+                "{candidate.reasoning}"
+              </div>
+            </div>
+
             <div className="mb-6">
               <div className="text-sm font-semibold text-text-muted uppercase tracking-wider mb-3">Verified Skills</div>
               <div className="flex flex-wrap gap-2">
-                {candidate.skills.map(skill => (
+                {candidate.skills.map((skill: string) => (
                   <span key={skill} className="px-3 py-1.5 bg-emerald/10 text-emerald border border-emerald/20 rounded-lg text-sm font-medium flex items-center gap-1.5">
                     <CheckCircle2 className="w-3.5 h-3.5" /> {skill}
                   </span>
@@ -106,19 +138,7 @@ export default function RecruiterSwipe() {
                 </div>
               </div>
             </div>
-
-            <div>
-              <div className="text-sm font-semibold text-text-muted uppercase tracking-wider mb-3">Verified Certifications</div>
-              <ul className="space-y-2">
-                {candidate.certifications.map(cert => (
-                  <li key={cert.id} className="flex items-center gap-3 text-sm">
-                    <CheckCircle2 className="w-4 h-4 text-emerald shrink-0" />
-                    <span className="font-medium">{cert.name}</span>
-                    <span className="text-text-muted text-xs">({cert.issuer})</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
+            
           </div>
 
           <div className="p-6 border-t border-border flex gap-4 bg-bg-primary">
