@@ -144,8 +144,8 @@ export default function InterviewReportPage({ params }: ReportPageProps) {
           <div className="inline-flex items-center gap-2 rounded-full border border-orange-500/30 bg-orange-500/10 px-3 py-1 text-xs font-bold text-orange-500 mb-3">
             <Sparkles className="w-3.5 h-3.5" /> Performance Report
           </div>
-          <h1 className="text-3xl md:text-4xl font-extrabold tracking-tight">Interview Coaching Analysis</h1>
-          <p className="text-text-secondary text-sm md:text-base mt-1">
+          <h1 className="text-3xl md:text-4xl font-extrabold tracking-tight text-slate-900 dark:text-white">Interview Coaching Analysis</h1>
+          <p className="text-slate-600 dark:text-slate-300 text-sm md:text-base mt-1">
             Detailed evaluation, competency scores, and actionable growth plan.
           </p>
         </div>
@@ -153,13 +153,13 @@ export default function InterviewReportPage({ params }: ReportPageProps) {
         <div className="flex items-center gap-3">
           <Link
             href="/demo/candidate/interview/history"
-            className="flex items-center gap-1.5 px-4 py-2 rounded-xl bg-bg-secondary dark:bg-midnight-800 border border-border dark:border-midnight-600 text-xs font-semibold hover:border-orange-500/50 transition-colors shadow-sm"
+            className="flex items-center gap-1.5 px-4 py-2 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 text-xs font-semibold hover:border-orange-500/50 transition-colors shadow-sm"
           >
             <History className="w-4 h-4 text-orange-500" /> All Sessions
           </Link>
           <Link
             href="/demo/candidate/ai-tools"
-            className="px-4 py-2 rounded-xl bg-bg-secondary dark:bg-midnight-800 border border-border dark:border-midnight-600 text-xs font-semibold text-text-muted hover:text-foreground transition-colors"
+            className="px-4 py-2 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-xs font-semibold text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors"
           >
             Exit to AI Tools
           </Link>
@@ -167,10 +167,10 @@ export default function InterviewReportPage({ params }: ReportPageProps) {
       </div>
 
       {/* Overview Card: Score, Role & Status */}
-      <div className="bg-bg-secondary dark:bg-midnight-800 rounded-3xl p-6 md:p-8 border border-border dark:border-midnight-600 shadow-xl grid grid-cols-1 md:grid-cols-12 gap-6 items-center">
+      <div className="bg-white dark:bg-slate-900 rounded-3xl p-6 md:p-8 border border-slate-200 dark:border-slate-800 shadow-xl grid grid-cols-1 md:grid-cols-12 gap-6 items-center">
         {/* Score Badge (4 cols) */}
-        <div className="md:col-span-4 flex flex-col items-center justify-center p-6 bg-midnight-900 rounded-2xl border border-midnight-700 text-center">
-          <span className="text-xs font-bold text-neutral-400 uppercase tracking-wider mb-2">
+        <div className="md:col-span-4 flex flex-col items-center justify-center p-6 bg-[#0f172a] text-white rounded-2xl border border-slate-700 text-center">
+          <span className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">
             Overall Coaching Estimate
           </span>
           {report.overallScore !== null ? (
@@ -178,14 +178,14 @@ export default function InterviewReportPage({ params }: ReportPageProps) {
               <span className="text-5xl md:text-6xl font-black text-orange-500 font-display">
                 {report.overallScore}
               </span>
-              <span className="text-lg font-bold text-neutral-400">/100</span>
+              <span className="text-lg font-bold text-slate-400">/100</span>
             </div>
           ) : (
             <div className="my-2 p-3 bg-amber-500/10 border border-amber-500/20 rounded-xl text-amber-400 text-xs font-semibold">
               Insufficient Evidence (&lt; 2 questions completed)
             </div>
           )}
-          <p className="text-[11px] text-neutral-400 mt-2 max-w-[220px]">
+          <p className="text-[11px] text-slate-400 mt-2 max-w-[220px]">
             Private coaching score based on evaluated competencies. Not a public hiring endorsement.
           </p>
         </div>
@@ -193,17 +193,17 @@ export default function InterviewReportPage({ params }: ReportPageProps) {
         {/* Metadata & Status (8 cols) */}
         <div className="md:col-span-8 space-y-4">
           <div className="flex flex-wrap items-center gap-3">
-            <span className="px-3 py-1 rounded-lg bg-orange-500/10 text-orange-500 dark:text-orange-400 text-xs font-bold border border-orange-500/20">
+            <span className="px-3 py-1 rounded-lg bg-orange-500/10 text-orange-600 dark:text-orange-400 text-xs font-bold border border-orange-500/20">
               {report.role}
             </span>
-            <span className="px-3 py-1 rounded-lg bg-midnight-700 text-neutral-200 text-xs font-semibold border border-midnight-600">
+            <span className="px-3 py-1 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 text-xs font-semibold border border-slate-200 dark:border-slate-700">
               {report.interviewType} Round
             </span>
             <span
               className={`px-3 py-1 rounded-lg text-xs font-bold border ${
                 isComplete
                   ? "bg-emerald/10 text-emerald border-emerald/20"
-                  : "bg-amber-500/10 text-amber-400 border-amber-500/20"
+                  : "bg-amber-500/10 text-amber-600 dark:text-amber-400 border-amber-500/20"
               }`}
             >
               {isComplete ? "Completed Simulation" : "Ended Early"}
@@ -212,22 +212,22 @@ export default function InterviewReportPage({ params }: ReportPageProps) {
 
           <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 pt-2 text-xs">
             {report.targetCompany && (
-              <div className="p-3 bg-bg-primary dark:bg-midnight-900 rounded-xl border border-border dark:border-midnight-700">
-                <span className="text-text-muted block text-[10px] font-bold uppercase">Target Company</span>
-                <span className="font-semibold text-foreground dark:text-white flex items-center gap-1 mt-0.5">
+              <div className="p-3 bg-slate-50 dark:bg-slate-800/80 rounded-xl border border-slate-200 dark:border-slate-700">
+                <span className="text-slate-500 dark:text-slate-400 block text-[10px] font-bold uppercase">Target Company</span>
+                <span className="font-semibold text-slate-900 dark:text-white flex items-center gap-1 mt-0.5">
                   <Building2 className="w-3.5 h-3.5 text-sky" /> {report.targetCompany}
                 </span>
               </div>
             )}
-            <div className="p-3 bg-bg-primary dark:bg-midnight-900 rounded-xl border border-border dark:border-midnight-700">
-              <span className="text-text-muted block text-[10px] font-bold uppercase">Questions Answered</span>
-              <span className="font-semibold text-foreground dark:text-white mt-0.5 block">
+            <div className="p-3 bg-slate-50 dark:bg-slate-800/80 rounded-xl border border-slate-200 dark:border-slate-700">
+              <span className="text-slate-500 dark:text-slate-400 block text-[10px] font-bold uppercase">Questions Answered</span>
+              <span className="font-semibold text-slate-900 dark:text-white mt-0.5 block">
                 {report.totalQuestionsAnswered} Questions
               </span>
             </div>
-            <div className="p-3 bg-bg-primary dark:bg-midnight-900 rounded-xl border border-border dark:border-midnight-700">
-              <span className="text-text-muted block text-[10px] font-bold uppercase">Time Elapsed</span>
-              <span className="font-semibold text-foreground dark:text-white mt-0.5 block">
+            <div className="p-3 bg-slate-50 dark:bg-slate-800/80 rounded-xl border border-slate-200 dark:border-slate-700">
+              <span className="text-slate-500 dark:text-slate-400 block text-[10px] font-bold uppercase">Time Elapsed</span>
+              <span className="font-semibold text-slate-900 dark:text-white mt-0.5 block">
                 {Math.round(report.activeElapsedSeconds / 60)} minutes
               </span>
             </div>
@@ -236,12 +236,12 @@ export default function InterviewReportPage({ params }: ReportPageProps) {
       </div>
 
       {/* Competency Breakdown Grid */}
-      <div className="bg-bg-secondary dark:bg-midnight-800 rounded-3xl p-6 md:p-8 border border-border dark:border-midnight-600 shadow-xl space-y-6">
+      <div className="bg-white dark:bg-slate-900 rounded-3xl p-6 md:p-8 border border-slate-200 dark:border-slate-800 shadow-xl space-y-6">
         <div>
-          <h2 className="text-xl font-bold text-foreground dark:text-white flex items-center gap-2">
+          <h2 className="text-xl font-bold text-slate-900 dark:text-white flex items-center gap-2">
             <Trophy className="w-5 h-5 text-orange-500" /> Competency Breakdown
           </h2>
-          <p className="text-xs text-text-secondary mt-1">
+          <p className="text-xs text-slate-600 dark:text-slate-300 mt-1">
             Scores reflect evidence collected across your responses and follow-up probes.
           </p>
         </div>
@@ -250,17 +250,17 @@ export default function InterviewReportPage({ params }: ReportPageProps) {
           {report.competencyScores.map((c, i) => (
             <div
               key={i}
-              className="p-4 rounded-2xl bg-bg-primary dark:bg-midnight-900 border border-border dark:border-midnight-700 space-y-2.5"
+              className="p-4 rounded-2xl bg-slate-50 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 space-y-2.5"
             >
               <div className="flex items-center justify-between">
-                <span className="font-bold text-sm text-foreground dark:text-white">{c.competency}</span>
+                <span className="font-bold text-sm text-slate-900 dark:text-white">{c.competency}</span>
                 <span className="font-bold text-sm font-mono text-orange-500">
                   {c.assessed ? `${c.score}/100` : "Unassessed"}
                 </span>
               </div>
 
               {/* Score bar */}
-              <div className="w-full bg-neutral-200 dark:bg-midnight-800 rounded-full h-2.5 overflow-hidden">
+              <div className="w-full bg-slate-200 dark:bg-slate-700 rounded-full h-2.5 overflow-hidden">
                 <div
                   className={`h-full rounded-full transition-all duration-700 ${
                     c.assessed ? "bg-gradient-to-r from-orange-500 to-amber-400" : "bg-neutral-600"
@@ -269,7 +269,7 @@ export default function InterviewReportPage({ params }: ReportPageProps) {
                 />
               </div>
 
-              <p className="text-xs text-text-secondary dark:text-neutral-400 leading-relaxed">
+              <p className="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
                 {c.evidence}
               </p>
             </div>
@@ -280,11 +280,11 @@ export default function InterviewReportPage({ params }: ReportPageProps) {
       {/* Strengths & Improvement Areas */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {/* 3 Strengths */}
-        <div className="p-6 bg-emerald/10 border border-emerald/20 rounded-3xl shadow-sm space-y-4">
-          <h3 className="font-bold text-base text-emerald flex items-center gap-2">
+        <div className="p-6 bg-emerald-50 dark:bg-emerald-950/20 border border-emerald-200 dark:border-emerald-800/40 rounded-3xl shadow-sm space-y-4">
+          <h3 className="font-bold text-base text-emerald-900 dark:text-emerald-400 flex items-center gap-2">
             <CheckCircle2 className="w-5 h-5" /> Top Observed Strengths
           </h3>
-          <ul className="space-y-3 text-xs md:text-sm font-medium text-emerald-300">
+          <ul className="space-y-3 text-xs md:text-sm font-medium text-emerald-950 dark:text-emerald-300">
             {report.strengths.map((str, idx) => (
               <li key={idx} className="flex items-start gap-2.5 leading-relaxed">
                 <span className="shrink-0 mt-0.5 text-emerald font-bold">•</span>
@@ -295,14 +295,14 @@ export default function InterviewReportPage({ params }: ReportPageProps) {
         </div>
 
         {/* 3 Areas of Improvement */}
-        <div className="p-6 bg-amber-500/10 border border-amber-500/20 rounded-3xl shadow-sm space-y-4">
-          <h3 className="font-bold text-base text-amber-400 flex items-center gap-2">
+        <div className="p-6 bg-amber-50 dark:bg-amber-950/20 border border-amber-200 dark:border-amber-800/40 rounded-3xl shadow-sm space-y-4">
+          <h3 className="font-bold text-base text-amber-900 dark:text-amber-400 flex items-center gap-2">
             <Zap className="w-5 h-5" /> High-Impact Improvement Areas
           </h3>
-          <ul className="space-y-3 text-xs md:text-sm font-medium text-amber-200">
+          <ul className="space-y-3 text-xs md:text-sm font-medium text-amber-950 dark:text-amber-200">
             {report.improvementAreas.map((imp, idx) => (
               <li key={idx} className="flex items-start gap-2.5 leading-relaxed">
-                <span className="shrink-0 mt-0.5 text-amber-400 font-bold">•</span>
+                <span className="shrink-0 mt-0.5 text-amber-500 font-bold">•</span>
                 <span>{imp}</span>
               </li>
             ))}
@@ -311,12 +311,12 @@ export default function InterviewReportPage({ params }: ReportPageProps) {
       </div>
 
       {/* Traceable Question-by-Question Review */}
-      <div className="bg-bg-secondary dark:bg-midnight-800 rounded-3xl p-6 md:p-8 border border-border dark:border-midnight-600 shadow-xl space-y-6">
+      <div className="bg-white dark:bg-slate-900 rounded-3xl p-6 md:p-8 border border-slate-200 dark:border-slate-800 shadow-xl space-y-6">
         <div>
-          <h2 className="text-xl font-bold text-foreground dark:text-white flex items-center gap-2">
+          <h2 className="text-xl font-bold text-slate-900 dark:text-white flex items-center gap-2">
             <BookOpen className="w-5 h-5 text-orange-500" /> Question-by-Question Feedback
           </h2>
-          <p className="text-xs text-text-secondary mt-1">
+          <p className="text-xs text-slate-600 dark:text-slate-300 mt-1">
             Traceable analysis linking your exact response to the competency criteria.
           </p>
         </div>
@@ -325,25 +325,25 @@ export default function InterviewReportPage({ params }: ReportPageProps) {
           {report.perQuestionFeedback.map((item, idx) => (
             <div
               key={item.turnId || idx}
-              className="p-5 rounded-2xl bg-bg-primary dark:bg-midnight-900 border border-border dark:border-midnight-700 space-y-3"
+              className="p-5 rounded-2xl bg-slate-50 dark:bg-slate-850 border border-slate-200 dark:border-slate-800 space-y-3"
             >
-              <div className="flex flex-wrap items-center justify-between gap-2 border-b border-border/50 dark:border-midnight-700 pb-3">
+              <div className="flex flex-wrap items-center justify-between gap-2 border-b border-slate-200 dark:border-slate-700 pb-3">
                 <span className="text-xs font-bold text-orange-500">
                   Question {idx + 1}: {item.competency}
                 </span>
-                <span className="text-xs font-mono font-bold text-neutral-300 px-2 py-0.5 rounded bg-midnight-800">
+                <span className="text-xs font-mono font-bold text-slate-700 dark:text-slate-200 px-2 py-0.5 rounded bg-slate-200 dark:bg-slate-700">
                   Score: {item.score}/100
                 </span>
               </div>
 
               {/* Question Text */}
-              <p className="text-sm font-bold text-foreground dark:text-neutral-100">
+              <p className="text-sm font-bold text-slate-900 dark:text-white">
                 &ldquo;{item.questionText}&rdquo;
               </p>
 
               {/* Candidate Transcript */}
-              <div className="p-3.5 rounded-xl bg-midnight-800/80 border border-midnight-700 text-xs text-neutral-300">
-                <p className="text-[10px] font-bold uppercase tracking-wider text-neutral-400 mb-1">
+              <div className="p-3.5 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-xs text-slate-700 dark:text-slate-300">
+                <p className="text-[10px] font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-1">
                   Your Answer Excerpt:
                 </p>
                 <p className="italic leading-relaxed">
@@ -354,17 +354,17 @@ export default function InterviewReportPage({ params }: ReportPageProps) {
               </div>
 
               {/* Coach Evaluation Feedback */}
-              <div className="text-xs text-neutral-300 space-y-1 leading-relaxed">
-                <p className="font-semibold text-emerald">Coach Feedback:</p>
+              <div className="text-xs text-slate-700 dark:text-slate-300 space-y-1 leading-relaxed">
+                <p className="font-semibold text-emerald-600 dark:text-emerald-400">Coach Feedback:</p>
                 <p>{item.feedback}</p>
               </div>
 
               {/* Suggested Answer Framework */}
-              <div className="p-3 bg-orange-500/5 border border-orange-500/20 rounded-xl text-xs text-neutral-300">
-                <p className="font-bold text-orange-400 mb-0.5 text-[11px]">
+              <div className="p-3 bg-orange-500/10 border border-orange-500/20 rounded-xl text-xs text-slate-800 dark:text-slate-200">
+                <p className="font-bold text-orange-600 dark:text-orange-400 mb-0.5 text-[11px]">
                   💡 Recommended Answer Framework:
                 </p>
-                <p className="text-neutral-300">{item.suggestedFramework}</p>
+                <p className="text-slate-700 dark:text-slate-300">{item.suggestedFramework}</p>
               </div>
             </div>
           ))}
@@ -372,19 +372,19 @@ export default function InterviewReportPage({ params }: ReportPageProps) {
       </div>
 
       {/* Recommended Next Practice & Action Items */}
-      <div className="bg-midnight-900 rounded-3xl p-6 md:p-8 border border-midnight-600 shadow-xl space-y-6">
+      <div className="bg-[#0f172a] text-white rounded-3xl p-6 md:p-8 border border-slate-800 shadow-xl space-y-6">
         <div>
           <h2 className="text-lg font-bold text-white flex items-center gap-2">
             <Zap className="w-5 h-5 text-orange-500" /> Actionable Next Steps
           </h2>
-          <p className="text-xs text-neutral-400 mt-0.5">
+          <p className="text-xs text-slate-400 mt-0.5">
             Targeted drills recommended based on your response patterns:
           </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
           {report.nextActions.map((action, i) => (
-            <div key={i} className="p-4 rounded-xl bg-midnight-800 border border-midnight-700 text-xs text-neutral-200">
+            <div key={i} className="p-4 rounded-xl bg-slate-800 border border-slate-700 text-xs text-slate-200">
               <span className="w-5 h-5 rounded-full bg-orange-500/20 text-orange-400 font-bold inline-flex items-center justify-center mb-2">
                 {i + 1}
               </span>
@@ -394,7 +394,7 @@ export default function InterviewReportPage({ params }: ReportPageProps) {
         </div>
 
         {/* Action Buttons */}
-        <div className="pt-4 border-t border-midnight-700 flex flex-wrap items-center justify-between gap-4">
+        <div className="pt-4 border-t border-slate-700 flex flex-wrap items-center justify-between gap-4">
           <div className="flex flex-wrap items-center gap-3">
             <button
               onClick={handleRetakeEquivalent}
@@ -404,7 +404,7 @@ export default function InterviewReportPage({ params }: ReportPageProps) {
             </button>
             <button
               onClick={handleHarderSession}
-              className="px-5 py-2.5 rounded-xl bg-midnight-700 hover:bg-midnight-600 text-neutral-200 font-bold text-xs border border-midnight-600 transition-colors flex items-center gap-2"
+              className="px-5 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold text-xs border border-slate-700 transition-colors flex items-center gap-2"
             >
               <Zap className="w-3.5 h-3.5 text-amber-400" /> Practice Harder Level (Bar Raiser)
             </button>
@@ -412,7 +412,7 @@ export default function InterviewReportPage({ params }: ReportPageProps) {
 
           <Link
             href="/demo/candidate/ai-tools"
-            className="text-xs font-semibold text-neutral-400 hover:text-white transition-colors"
+            className="text-xs font-semibold text-slate-400 hover:text-white transition-colors"
           >
             Back to AI Career Tools &rarr;
           </Link>
@@ -420,10 +420,10 @@ export default function InterviewReportPage({ params }: ReportPageProps) {
       </div>
 
       {/* Disclaimers & Ethics Guarantee */}
-      <div className="p-4 rounded-2xl bg-midnight-950 border border-midnight-800 text-[11px] text-neutral-400 flex items-start gap-2.5">
+      <div className="p-4 rounded-2xl bg-[#0f172a] border border-slate-800 text-[11px] text-slate-400 flex items-start gap-2.5">
         <ShieldCheck className="w-4 h-4 text-emerald shrink-0 mt-0.5" />
         <div className="space-y-1">
-          <p className="font-semibold text-neutral-300">Methodology & Privacy Disclosure</p>
+          <p className="font-semibold text-slate-200">Methodology & Privacy Disclosure</p>
           <p>{report.providerNotice}</p>
           <p>
             All coaching scores are strictly non-public formative practice aids. They are never transmitted to recruiters or used to calculate leaderboard rankings without candidate initiation.

@@ -46,7 +46,7 @@ export function RoomControlBar({
 
   return (
     <>
-      <div className="h-16 bg-bg-secondary dark:bg-midnight-900 border-t border-border dark:border-midnight-700 px-4 md:px-8 flex items-center justify-between sticky bottom-0 z-40 backdrop-blur-md">
+      <div className="h-16 bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 px-4 md:px-8 flex items-center justify-between sticky bottom-0 z-40 backdrop-blur-md">
         {/* Left: Media Toggles */}
         <div className="flex items-center gap-2">
           <button
@@ -54,7 +54,7 @@ export function RoomControlBar({
             className={`p-2.5 rounded-xl border transition-colors flex items-center gap-1.5 text-xs font-semibold ${
               isMuted
                 ? "bg-rose/10 border-rose/30 text-rose"
-                : "bg-midnight-800 hover:bg-midnight-700 border-midnight-600 text-neutral-200"
+                : "bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 border-slate-300 dark:border-slate-700 text-slate-800 dark:text-slate-200 shadow-sm"
             }`}
             title={isMuted ? "Unmute audio" : "Mute audio"}
           >
@@ -66,8 +66,8 @@ export function RoomControlBar({
             onClick={onToggleCamera}
             className={`p-2.5 rounded-xl border transition-colors flex items-center gap-1.5 text-xs font-semibold ${
               isCameraActive
-                ? "bg-midnight-800 hover:bg-midnight-700 border-midnight-600 text-neutral-200"
-                : "bg-midnight-800/50 border-midnight-700 text-neutral-400"
+                ? "bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 border-slate-300 dark:border-slate-700 text-slate-800 dark:text-slate-200 shadow-sm"
+                : "bg-slate-100/60 dark:bg-slate-800/50 border-slate-200 dark:border-slate-700 text-slate-400"
             }`}
             title={isCameraActive ? "Disable camera" : "Enable camera"}
           >
@@ -87,7 +87,7 @@ export function RoomControlBar({
             className={`px-3.5 py-2 rounded-xl border text-xs font-bold transition-all flex items-center gap-1.5 ${
               isPaused
                 ? "bg-amber-500 text-white border-amber-600 animate-pulse"
-                : "bg-midnight-800 hover:bg-midnight-700 border-midnight-600 text-neutral-200"
+                : "bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 border-slate-300 dark:border-slate-700 text-slate-800 dark:text-slate-200 shadow-sm"
             }`}
           >
             {isPaused ? <Play className="w-4 h-4" /> : <Pause className="w-4 h-4" />}
@@ -98,8 +98,8 @@ export function RoomControlBar({
             onClick={onToggleTranscript}
             className={`p-2.5 rounded-xl border transition-colors text-xs font-semibold flex items-center gap-1.5 ${
               showTranscript
-                ? "bg-orange-500/10 border-orange-500/30 text-orange-400"
-                : "bg-midnight-800 hover:bg-midnight-700 border-midnight-600 text-neutral-400"
+                ? "bg-orange-500/10 border-orange-500/30 text-orange-600 dark:text-orange-400"
+                : "bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 border-slate-300 dark:border-slate-700 text-slate-600 dark:text-slate-400 shadow-sm"
             }`}
             title="Toggle Transcript Drawer"
           >
@@ -112,7 +112,7 @@ export function RoomControlBar({
         <div className="flex items-center gap-2">
           <button
             onClick={onToggleFullscreen}
-            className="p-2.5 rounded-xl bg-midnight-800 hover:bg-midnight-700 border border-midnight-600 text-neutral-300 transition-colors hidden sm:flex"
+            className="p-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 border border-slate-300 dark:border-slate-700 text-slate-600 dark:text-slate-300 transition-colors hidden sm:flex shadow-sm"
             title={isFullscreen ? "Exit Fullscreen" : "Enter Fullscreen"}
           >
             {isFullscreen ? <Minimize2 className="w-4 h-4" /> : <Maximize2 className="w-4 h-4" />}
@@ -131,22 +131,22 @@ export function RoomControlBar({
       {/* Confirmation Modal for Ending Early */}
       {showConfirmEnd && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/75 backdrop-blur-sm animate-fade-in">
-          <div className="bg-bg-secondary dark:bg-midnight-800 border border-border dark:border-midnight-600 rounded-2xl p-6 max-w-md w-full shadow-2xl space-y-4">
+          <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-6 max-w-md w-full shadow-2xl space-y-4">
             <div className="flex items-center gap-3 text-amber-500">
               <div className="p-2.5 rounded-xl bg-amber-500/10 border border-amber-500/20">
                 <AlertTriangle className="w-6 h-6" />
               </div>
-              <h3 className="font-bold text-lg text-foreground dark:text-white">End Interview Simulation?</h3>
+              <h3 className="font-bold text-lg text-slate-900 dark:text-white">End Interview Simulation?</h3>
             </div>
 
-            <p className="text-sm text-text-secondary dark:text-neutral-300 leading-relaxed">
+            <p className="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
               Are you sure you want to wrap up this interview now? You will immediately receive a coaching performance report evaluating the questions you answered so far.
             </p>
 
             <div className="flex justify-end gap-3 pt-2">
               <button
                 onClick={() => setShowConfirmEnd(false)}
-                className="px-4 py-2 rounded-lg text-xs font-semibold text-text-muted hover:text-foreground dark:hover:text-white transition-colors"
+                className="px-4 py-2 rounded-lg text-xs font-semibold text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white transition-colors"
               >
                 Continue Interview
               </button>

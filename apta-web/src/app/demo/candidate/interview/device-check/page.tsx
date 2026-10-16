@@ -143,12 +143,12 @@ export default function DeviceCheckPage() {
         <div>
           <Link
             href="/demo/candidate/interview"
-            className="inline-flex items-center gap-1.5 text-xs font-semibold text-text-muted hover:text-foreground mb-3 transition-colors"
+            className="inline-flex items-center gap-1.5 text-xs font-semibold text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white mb-3 transition-colors"
           >
             <ArrowLeft className="w-3.5 h-3.5" /> Back to Configuration
           </Link>
-          <h1 className="text-3xl font-extrabold tracking-tight">Audio & Device Check</h1>
-          <p className="text-text-secondary text-sm mt-1">
+          <h1 className="text-3xl font-extrabold tracking-tight text-slate-900 dark:text-white">Audio & Device Check</h1>
+          <p className="text-slate-600 dark:text-slate-300 text-sm mt-1">
             Ensure your microphone and speakers are functioning clearly before entering the Arena.
           </p>
         </div>
@@ -158,7 +158,7 @@ export default function DeviceCheckPage() {
         {/* Device Test Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {/* Card 1: Microphone Test */}
-          <div className="bg-bg-secondary dark:bg-midnight-800 rounded-3xl p-6 border border-border dark:border-midnight-600 shadow-lg flex flex-col justify-between">
+          <div className="bg-white dark:bg-slate-900 rounded-3xl p-6 border border-slate-200 dark:border-slate-800 shadow-lg flex flex-col justify-between">
             <div>
               <div className="flex items-center justify-between mb-4">
                 <div className="flex items-center gap-2.5">
@@ -166,8 +166,8 @@ export default function DeviceCheckPage() {
                     <Mic className="w-5 h-5" />
                   </div>
                   <div>
-                    <h3 className="font-bold text-sm text-foreground dark:text-white">Microphone Input</h3>
-                    <p className="text-xs text-text-muted">Speech capture & transcription</p>
+                    <h3 className="font-bold text-sm text-slate-900 dark:text-white">Microphone Input</h3>
+                    <p className="text-xs text-slate-500 dark:text-slate-400">Speech capture & transcription</p>
                   </div>
                 </div>
 
@@ -180,7 +180,7 @@ export default function DeviceCheckPage() {
 
               {micStatus === "idle" && (
                 <div className="py-6 text-center">
-                  <p className="text-xs text-text-secondary dark:text-neutral-300 mb-4">
+                  <p className="text-xs text-slate-600 dark:text-slate-300 mb-4">
                     Click below to allow microphone access. We never access your mic without your explicit consent.
                   </p>
                   <button
@@ -193,24 +193,24 @@ export default function DeviceCheckPage() {
               )}
 
               {micStatus === "requesting" && (
-                <div className="py-6 text-center text-xs text-text-muted animate-pulse">
+                <div className="py-6 text-center text-xs text-slate-500 dark:text-slate-400 animate-pulse">
                   Prompting browser for microphone permissions...
                 </div>
               )}
 
               {micStatus === "granted" && (
                 <div className="space-y-3 py-2">
-                  <p className="text-xs font-semibold text-text-secondary dark:text-neutral-300">
+                  <p className="text-xs font-semibold text-slate-700 dark:text-slate-200">
                     Speak into your microphone to test volume:
                   </p>
                   {/* Volume Level Meter Bar */}
-                  <div className="w-full bg-neutral-200 dark:bg-midnight-900 rounded-full h-3 overflow-hidden p-0.5 border border-border dark:border-midnight-700">
+                  <div className="w-full bg-slate-200 dark:bg-slate-800 rounded-full h-3 overflow-hidden p-0.5 border border-slate-300 dark:border-slate-700">
                     <div
                       className="h-full rounded-full bg-gradient-to-r from-emerald to-orange-500 transition-all duration-75"
                       style={{ width: `${Math.max(5, Math.min(100, volumeLevel))}%` }}
                     />
                   </div>
-                  <div className="flex justify-between text-[11px] text-text-muted">
+                  <div className="flex justify-between text-[11px] text-slate-500 dark:text-slate-400">
                     <span>Input level: {volumeLevel}%</span>
                     <span>{volumeLevel > 15 ? "Voice detected" : "Awaiting speech"}</span>
                   </div>
@@ -222,7 +222,7 @@ export default function DeviceCheckPage() {
                   <div className="flex items-center gap-2 text-rose font-bold">
                     <AlertTriangle className="w-4 h-4" /> Mic access blocked or not found
                   </div>
-                  <p className="text-neutral-300 text-[11px] leading-relaxed">
+                  <p className="text-slate-600 dark:text-slate-300 text-[11px] leading-relaxed">
                     You can still proceed seamlessly with the <strong>Text Interview Fallback</strong>.
                   </p>
                   <button
@@ -230,7 +230,7 @@ export default function DeviceCheckPage() {
                       setDeviceCheck({ textModeFallback: true });
                       setMicStatus("granted");
                     }}
-                    className="px-3 py-1.5 rounded-lg bg-midnight-700 hover:bg-midnight-600 border border-midnight-600 text-neutral-200 text-xs font-semibold"
+                    className="px-3 py-1.5 rounded-lg bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 border border-slate-300 dark:border-slate-700 text-slate-800 dark:text-slate-200 text-xs font-semibold"
                   >
                     Switch to Text Mode Fallback
                   </button>
@@ -238,13 +238,13 @@ export default function DeviceCheckPage() {
               )}
             </div>
 
-            <div className="pt-4 border-t border-border dark:border-midnight-700 text-[11px] text-text-muted">
+            <div className="pt-4 border-t border-slate-200 dark:border-slate-800 text-[11px] text-slate-500 dark:text-slate-400">
               Audio is processed for real-time transcription and not stored as permanent raw recordings.
             </div>
           </div>
 
           {/* Card 2: Audio Output & Speaker Test */}
-          <div className="bg-bg-secondary dark:bg-midnight-800 rounded-3xl p-6 border border-border dark:border-midnight-600 shadow-lg flex flex-col justify-between">
+          <div className="bg-white dark:bg-slate-900 rounded-3xl p-6 border border-slate-200 dark:border-slate-800 shadow-lg flex flex-col justify-between">
             <div>
               <div className="flex items-center justify-between mb-4">
                 <div className="flex items-center gap-2.5">
@@ -252,8 +252,8 @@ export default function DeviceCheckPage() {
                     <Volume2 className="w-5 h-5" />
                   </div>
                   <div>
-                    <h3 className="font-bold text-sm text-foreground dark:text-white">Audio & Speaker Output</h3>
-                    <p className="text-xs text-text-muted">Interviewer speech playback</p>
+                    <h3 className="font-bold text-sm text-slate-900 dark:text-white">Audio & Speaker Output</h3>
+                    <p className="text-xs text-slate-500 dark:text-slate-400">Interviewer speech playback</p>
                   </div>
                 </div>
 
@@ -265,7 +265,7 @@ export default function DeviceCheckPage() {
               </div>
 
               <div className="py-6 text-center space-y-4">
-                <p className="text-xs text-text-secondary dark:text-neutral-300">
+                <p className="text-xs text-slate-600 dark:text-slate-300">
                   Play our verification chime to ensure you can clearly hear the AI interviewer&apos;s questions.
                 </p>
 
@@ -275,7 +275,7 @@ export default function DeviceCheckPage() {
                   className={`px-5 py-2.5 rounded-xl border text-xs font-bold transition-all flex items-center justify-center gap-2 mx-auto ${
                     isPlayingAudioTest
                       ? "bg-sky text-white border-sky animate-pulse"
-                      : "bg-midnight-700 hover:bg-midnight-600 text-neutral-200 border-midnight-600"
+                      : "bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-800 dark:text-white border-slate-300 dark:border-slate-700 shadow-sm"
                   }`}
                 >
                   <Play className="w-3.5 h-3.5" />
@@ -284,24 +284,24 @@ export default function DeviceCheckPage() {
               </div>
             </div>
 
-            <div className="pt-4 border-t border-border dark:border-midnight-700 text-[11px] text-text-muted">
+            <div className="pt-4 border-t border-slate-200 dark:border-slate-800 text-[11px] text-slate-500 dark:text-slate-400">
               You can also read full subtitles and question text on screen at any time.
             </div>
           </div>
         </div>
 
         {/* Optional Camera Preview Card */}
-        <div className="bg-bg-secondary dark:bg-midnight-800 rounded-3xl p-6 border border-border dark:border-midnight-600 shadow-lg">
+        <div className="bg-white dark:bg-slate-900 rounded-3xl p-6 border border-slate-200 dark:border-slate-800 shadow-lg">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-4">
             <div className="flex items-center gap-2.5">
               <div className="p-2.5 rounded-xl bg-emerald/10 text-emerald border border-emerald/20">
                 <Video className="w-5 h-5" />
               </div>
               <div>
-                <h3 className="font-bold text-sm text-foreground dark:text-white">
+                <h3 className="font-bold text-sm text-slate-900 dark:text-white">
                   Camera Preview (Optional)
                 </h3>
-                <p className="text-xs text-text-muted">
+                <p className="text-xs text-slate-500 dark:text-slate-400">
                   Off by default. Helps you practice eye focus and posture.
                 </p>
               </div>
@@ -310,7 +310,7 @@ export default function DeviceCheckPage() {
             {cameraStatus !== "granted" ? (
               <button
                 onClick={handleRequestCamera}
-                className="px-4 py-2 rounded-xl bg-midnight-700 hover:bg-midnight-600 border border-midnight-600 text-xs font-semibold text-neutral-200 transition-colors flex items-center gap-2 self-start sm:self-auto"
+                className="px-4 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 border border-slate-300 dark:border-slate-700 text-xs font-semibold text-slate-800 dark:text-slate-200 transition-colors flex items-center gap-2 self-start sm:self-auto"
               >
                 <Video className="w-3.5 h-3.5 text-sky" /> Test Camera Preview
               </button>
@@ -323,7 +323,7 @@ export default function DeviceCheckPage() {
                   setCameraStatus("idle");
                   setDeviceCheck({ isCameraActive: false });
                 }}
-                className="px-4 py-2 rounded-xl bg-midnight-700 hover:bg-midnight-600 border border-midnight-600 text-xs font-semibold text-rose transition-colors flex items-center gap-2 self-start sm:self-auto"
+                className="px-4 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 border border-slate-300 dark:border-slate-700 text-xs font-semibold text-rose transition-colors flex items-center gap-2 self-start sm:self-auto"
               >
                 <VideoOff className="w-3.5 h-3.5" /> Turn Camera Off
               </button>
@@ -331,7 +331,7 @@ export default function DeviceCheckPage() {
           </div>
 
           {cameraStatus === "granted" && (
-            <div className="relative aspect-video max-w-sm mx-auto rounded-2xl overflow-hidden bg-midnight-950 border border-midnight-700 my-4 shadow-inner">
+            <div className="relative aspect-video max-w-sm mx-auto rounded-2xl overflow-hidden bg-slate-950 border border-slate-800 my-4 shadow-inner">
               <video
                 ref={localVideoRef}
                 autoPlay
@@ -339,16 +339,16 @@ export default function DeviceCheckPage() {
                 muted
                 className="w-full h-full object-cover scale-x-[-1]"
               />
-              <div className="absolute bottom-2 left-2 px-2 py-0.5 rounded bg-black/70 text-[10px] text-neutral-300 font-medium">
+              <div className="absolute bottom-2 left-2 px-2 py-0.5 rounded bg-black/70 text-[10px] text-white font-medium">
                 Local Preview Only
               </div>
             </div>
           )}
 
-          <div className="p-3 bg-midnight-900/60 rounded-xl border border-midnight-700/60 flex items-start gap-2.5 text-xs text-neutral-400">
+          <div className="p-3 bg-slate-50 dark:bg-slate-800/60 rounded-xl border border-slate-200 dark:border-slate-700 flex items-start gap-2.5 text-xs text-slate-600 dark:text-slate-300">
             <ShieldCheck className="w-4 h-4 text-emerald shrink-0 mt-0.5" />
             <span>
-              <strong>Privacy Guarantee:</strong> Camera streams stay strictly in your browser. Video is never uploaded, recorded, or used for automated scoring.
+              <strong className="text-slate-900 dark:text-white">Privacy Guarantee:</strong> Camera streams stay strictly in your browser. Video is never uploaded, recorded, or used for automated scoring.
             </span>
           </div>
         </div>
@@ -359,14 +359,14 @@ export default function DeviceCheckPage() {
           </div>
         )}
 
-        {/* Start Interview Action Banner */}
-        <div className="pt-4 flex flex-col sm:flex-row items-center justify-between gap-4 bg-midnight-900/80 p-6 rounded-3xl border border-midnight-600 shadow-xl">
+        {/* Start Interview Action Banner with explicit dark container */}
+        <div className="pt-4 flex flex-col sm:flex-row items-center justify-between gap-4 bg-[#0f172a] text-white p-6 rounded-3xl border border-slate-800 shadow-xl">
           <div>
             <h4 className="font-bold text-white text-base">Ready to enter the Arena?</h4>
-            <p className="text-xs text-neutral-400 mt-0.5">
+            <p className="text-xs text-slate-300 mt-0.5">
               Role: <span className="text-orange-400 font-semibold">{config.jobRole}</span> • Type:{" "}
-              <span className="text-neutral-200 font-semibold">{config.interviewType}</span> • Duration:{" "}
-              <span className="text-neutral-200 font-semibold">{config.durationMinutes} min</span>
+              <span className="text-slate-100 font-semibold">{config.interviewType}</span> • Duration:{" "}
+              <span className="text-slate-100 font-semibold">{config.durationMinutes} min</span>
             </p>
           </div>
 

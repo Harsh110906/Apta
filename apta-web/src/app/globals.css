@@ -1,4 +1,24 @@
 @import "tailwindcss";
+@config "../../tailwind.config.ts";
+
+@theme {
+  --color-midnight: hsl(222, 47%, 11%);
+  --color-midnight-900: hsl(222, 47%, 13%);
+  --color-midnight-800: hsl(222, 47%, 15%);
+  --color-midnight-700: hsl(222, 40%, 20%);
+  --color-midnight-600: hsl(222, 35%, 28%);
+  --color-midnight-500: hsl(222, 30%, 36%);
+
+  --color-bg-primary: var(--bg-primary);
+  --color-bg-secondary: var(--bg-secondary);
+  --color-bg-tertiary: var(--bg-tertiary);
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  --color-text-muted: var(--text-muted);
+  --color-foreground: var(--foreground);
+  --color-border: var(--border);
+  --color-border-strong: var(--border-strong);
+}
 
 /* ============================================
    APTA DESIGN SYSTEM — globals.css
@@ -6,6 +26,7 @@
 
 /* --- Custom Properties --- */
 :root {
+  --foreground:    var(--text-primary);
   /* Brand Colors */
   --midnight:      hsl(222, 47%, 11%);
   --midnight-900:  hsl(222, 47%, 13%);
@@ -91,6 +112,7 @@
 
 /* Dark mode overrides */
 .dark {
+  --foreground:    var(--text-primary);
   --bg-primary:    var(--midnight);
   --bg-secondary:  var(--midnight-800);
   --bg-tertiary:   var(--midnight-700);

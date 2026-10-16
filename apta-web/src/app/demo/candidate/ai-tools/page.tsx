@@ -89,22 +89,22 @@ export default function AIToolsHub() {
   const renderInterviewCoach = () => {
     return (
       <div className="space-y-6 animate-fade-in">
-        {/* Arena Featured Banner */}
-        <div className="p-8 md:p-10 bg-gradient-to-br from-midnight-800 to-midnight-900 border border-orange-500/30 rounded-3xl text-left relative overflow-hidden shadow-2xl">
+        {/* Arena Featured Banner with explicit dark container */}
+        <div className="p-8 md:p-10 bg-[#0f172a] border border-orange-500/30 rounded-3xl text-left relative overflow-hidden shadow-2xl text-white">
           <div className="absolute top-0 right-0 w-64 h-64 bg-radial-glow opacity-30 pointer-events-none" />
           
           <div className="relative z-10 max-w-2xl">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-orange-500/10 border border-orange-500/30 text-orange-500 text-xs font-bold mb-4">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-orange-500/20 border border-orange-500/40 text-orange-400 text-xs font-bold mb-4">
               <Sparkles className="w-3.5 h-3.5" /> Full Virtual Experience
             </div>
-            <h3 className="text-2xl md:text-3xl font-extrabold text-white mb-3">
+            <h3 className="text-2xl md:text-3xl font-extrabold text-white mb-3 tracking-tight">
               Apta Interview Arena
             </h3>
-            <p className="text-neutral-300 text-sm md:text-base leading-relaxed mb-6">
+            <p className="text-slate-300 text-sm md:text-base leading-relaxed mb-6 font-medium">
               Enter an immersive, focused virtual interview room with our AI Interviewer. Configure your target company, expected compensation (LPA), and interview difficulty. Practice speaking aloud with live voice recognition and receive an evidence-backed coaching report.
             </p>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-8 text-xs text-neutral-300">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-8 text-xs text-slate-200">
               <div className="flex items-center gap-2">
                 <Volume2 className="w-4 h-4 text-orange-400" />
                 <span>Spoken audio questions & voice input</span>
@@ -132,7 +132,7 @@ export default function AIToolsHub() {
               </Link>
               <Link
                 href="/demo/candidate/interview/history"
-                className="px-5 py-3 rounded-xl bg-midnight-700 hover:bg-midnight-600 text-neutral-200 font-bold text-xs border border-midnight-600 transition-colors flex items-center gap-2"
+                className="px-5 py-3 rounded-xl bg-slate-800 hover:bg-slate-700 text-white font-bold text-xs border border-slate-700 transition-colors flex items-center gap-2"
               >
                 <History className="w-4 h-4 text-orange-400" /> View Past Reports
               </Link>
@@ -142,7 +142,7 @@ export default function AIToolsHub() {
 
         {/* Quick-Launch Track Cards */}
         <div>
-          <h4 className="font-bold text-base mb-3 text-foreground flex items-center gap-2">
+          <h4 className="font-bold text-base mb-3 text-text-primary flex items-center gap-2">
             <Sparkles className="w-4 h-4 text-orange-500" /> Recommended Interview Tracks
           </h4>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
@@ -150,7 +150,7 @@ export default function AIToolsHub() {
               href="/demo/candidate/interview"
               className="p-5 bg-bg-secondary border border-border rounded-2xl hover:border-orange-500/50 hover:-translate-y-0.5 transition-all block group"
             >
-              <div className="font-bold text-sm text-foreground mb-1 group-hover:text-orange-500 transition-colors">
+              <div className="font-bold text-sm text-text-primary mb-1 group-hover:text-orange-500 transition-colors">
                 Frontend Architecture
               </div>
               <p className="text-xs text-text-secondary leading-relaxed mb-3">
@@ -165,7 +165,7 @@ export default function AIToolsHub() {
               href="/demo/candidate/interview"
               className="p-5 bg-bg-secondary border border-border rounded-2xl hover:border-orange-500/50 hover:-translate-y-0.5 transition-all block group"
             >
-              <div className="font-bold text-sm text-foreground mb-1 group-hover:text-orange-500 transition-colors">
+              <div className="font-bold text-sm text-text-primary mb-1 group-hover:text-orange-500 transition-colors">
                 Backend & Distributed
               </div>
               <p className="text-xs text-text-secondary leading-relaxed mb-3">
@@ -180,7 +180,7 @@ export default function AIToolsHub() {
               href="/demo/candidate/interview"
               className="p-5 bg-bg-secondary border border-border rounded-2xl hover:border-orange-500/50 hover:-translate-y-0.5 transition-all block group"
             >
-              <div className="font-bold text-sm text-foreground mb-1 group-hover:text-orange-500 transition-colors">
+              <div className="font-bold text-sm text-text-primary mb-1 group-hover:text-orange-500 transition-colors">
                 HR & Behavioral
               </div>
               <p className="text-xs text-text-secondary leading-relaxed mb-3">

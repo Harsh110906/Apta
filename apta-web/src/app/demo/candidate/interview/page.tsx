@@ -156,8 +156,8 @@ export default function InterviewSetupPage() {
           <div className="inline-flex items-center gap-2 rounded-full border border-orange-500/30 bg-orange-500/10 px-3 py-1 text-xs font-bold text-orange-500 mb-3">
             <Sparkles className="w-3.5 h-3.5" /> Apta Interview Arena
           </div>
-          <h1 className="text-3xl md:text-4xl font-extrabold tracking-tight">Configure Your Interview</h1>
-          <p className="text-text-secondary text-sm md:text-base mt-1">
+          <h1 className="text-3xl md:text-4xl font-extrabold tracking-tight text-slate-900 dark:text-white">Configure Your Interview</h1>
+          <p className="text-slate-600 dark:text-slate-300 text-sm md:text-base mt-1">
             Simulate realistic technical and behavioral rounds tailored to your target role and goals.
           </p>
         </div>
@@ -165,13 +165,13 @@ export default function InterviewSetupPage() {
         <div className="flex items-center gap-3">
           <Link
             href="/demo/candidate/interview/history"
-            className="flex items-center gap-1.5 px-4 py-2 rounded-xl bg-bg-secondary dark:bg-midnight-800 border border-border dark:border-midnight-600 text-xs font-semibold hover:border-orange-500/50 transition-colors shadow-sm"
+            className="flex items-center gap-1.5 px-4 py-2 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 text-xs font-semibold hover:border-orange-500/50 transition-colors shadow-sm"
           >
             <History className="w-4 h-4 text-orange-500" /> Past Reports
           </Link>
           <Link
             href="/demo/candidate/ai-tools"
-            className="px-4 py-2 rounded-xl bg-bg-secondary dark:bg-midnight-800 border border-border dark:border-midnight-600 text-xs font-semibold text-text-muted hover:text-foreground transition-colors"
+            className="px-4 py-2 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-xs font-semibold text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors"
           >
             Exit to AI Tools
           </Link>
@@ -179,26 +179,26 @@ export default function InterviewSetupPage() {
       </div>
 
       {/* Main Setup Form Card */}
-      <div className="space-y-8 bg-bg-secondary dark:bg-midnight-800/80 rounded-3xl p-6 md:p-10 border border-border dark:border-midnight-600 shadow-xl backdrop-blur-md">
+      <div className="space-y-8 bg-white dark:bg-slate-900 rounded-3xl p-6 md:p-10 border border-slate-200 dark:border-slate-800 shadow-xl backdrop-blur-md">
         {/* Section 1: Core Target Role & Seniority */}
         <div className="space-y-4">
-          <h2 className="text-lg font-bold flex items-center gap-2 text-foreground dark:text-white">
+          <h2 className="text-lg font-bold flex items-center gap-2 text-slate-900 dark:text-white">
             <Briefcase className="w-5 h-5 text-orange-500" /> Target Role & Experience
           </h2>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {/* Job Role Selection */}
             <div>
-              <label className="block text-xs font-bold uppercase tracking-wider text-text-muted mb-2">
+              <label className="block text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-2">
                 Job Role <span className="text-orange-500">*</span>
               </label>
               <select
                 value={selectedRole}
                 onChange={(e) => setSelectedRole(e.target.value)}
-                className="w-full bg-bg-primary dark:bg-midnight-900 border border-border dark:border-midnight-600 rounded-xl px-4 py-3 text-sm font-semibold text-foreground dark:text-white focus:outline-none focus:border-orange-500"
+                className="w-full bg-slate-50 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 rounded-xl px-4 py-3 text-sm font-semibold text-slate-900 dark:text-white focus:outline-none focus:border-orange-500"
               >
                 {STANDARD_ROLES.map((role) => (
-                  <option key={role} value={role}>
+                  <option key={role} value={role} className="text-slate-900 bg-white dark:bg-slate-900 dark:text-white">
                     {role}
                   </option>
                 ))}
@@ -211,7 +211,7 @@ export default function InterviewSetupPage() {
                     value={customRoleText}
                     onChange={(e) => setCustomRoleText(e.target.value)}
                     placeholder="E.g., DevOps Engineer, Data Platform Architect..."
-                    className="w-full bg-bg-primary dark:bg-midnight-900 border border-border dark:border-midnight-600 rounded-xl px-4 py-2.5 text-sm font-medium focus:outline-none focus:border-orange-500"
+                    className="w-full bg-slate-50 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 rounded-xl px-4 py-2.5 text-sm font-medium text-slate-900 dark:text-white placeholder:text-slate-400 focus:outline-none focus:border-orange-500"
                   />
                   {errors.jobRole && (
                     <p className="text-xs font-semibold text-rose mt-1">{errors.jobRole}</p>
@@ -222,7 +222,7 @@ export default function InterviewSetupPage() {
 
             {/* Experience Level */}
             <div>
-              <label className="block text-xs font-bold uppercase tracking-wider text-text-muted mb-2">
+              <label className="block text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-2">
                 Experience Level <span className="text-orange-500">*</span>
               </label>
               <div className="grid grid-cols-2 gap-2">
@@ -234,7 +234,7 @@ export default function InterviewSetupPage() {
                     className={`px-3 py-2.5 rounded-xl border text-xs font-bold transition-all text-center ${
                       experienceLevel === lvl
                         ? "bg-orange-500 text-white border-orange-500 shadow-glow"
-                        : "bg-bg-primary dark:bg-midnight-900 border-border dark:border-midnight-700 text-text-secondary hover:text-foreground"
+                        : "bg-slate-50 dark:bg-slate-800/80 border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 hover:text-slate-900 dark:hover:text-white hover:border-slate-300"
                     }`}
                   >
                     {lvl}
@@ -246,15 +246,15 @@ export default function InterviewSetupPage() {
         </div>
 
         {/* Section 2: Format & Duration */}
-        <div className="space-y-4 pt-6 border-t border-border dark:border-midnight-700">
-          <h2 className="text-lg font-bold flex items-center gap-2 text-foreground dark:text-white">
+        <div className="space-y-4 pt-6 border-t border-slate-200 dark:border-slate-800">
+          <h2 className="text-lg font-bold flex items-center gap-2 text-slate-900 dark:text-white">
             <Clock className="w-5 h-5 text-orange-500" /> Format & Time Budget
           </h2>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {/* Interview Type */}
             <div>
-              <label className="block text-xs font-bold uppercase tracking-wider text-text-muted mb-2">
+              <label className="block text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-2">
                 Interview Domain <span className="text-orange-500">*</span>
               </label>
               <div className="grid grid-cols-3 gap-2">
@@ -266,7 +266,7 @@ export default function InterviewSetupPage() {
                     className={`py-3 px-2 rounded-xl border text-xs font-bold text-center transition-all ${
                       interviewType === type
                         ? "bg-orange-500 text-white border-orange-500 shadow-glow"
-                        : "bg-bg-primary dark:bg-midnight-900 border-border dark:border-midnight-700 text-text-secondary hover:text-foreground"
+                        : "bg-slate-50 dark:bg-slate-800/80 border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 hover:text-slate-900 dark:hover:text-white hover:border-slate-300"
                     }`}
                   >
                     {type}
@@ -277,7 +277,7 @@ export default function InterviewSetupPage() {
 
             {/* Duration */}
             <div>
-              <label className="block text-xs font-bold uppercase tracking-wider text-text-muted mb-2">
+              <label className="block text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-2">
                 Duration <span className="text-orange-500">*</span>
               </label>
               <div className="grid grid-cols-3 gap-2">
@@ -289,7 +289,7 @@ export default function InterviewSetupPage() {
                     className={`py-3 px-2 rounded-xl border text-xs font-bold text-center transition-all ${
                       duration === dur.value
                         ? "bg-orange-500 text-white border-orange-500 shadow-glow"
-                        : "bg-bg-primary dark:bg-midnight-900 border-border dark:border-midnight-700 text-text-secondary hover:text-foreground"
+                        : "bg-slate-50 dark:bg-slate-800/80 border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 hover:text-slate-900 dark:hover:text-white hover:border-slate-300"
                     }`}
                   >
                     {dur.value} Mins
@@ -301,18 +301,18 @@ export default function InterviewSetupPage() {
         </div>
 
         {/* Section 3: Company & Compensation Context (Optional) */}
-        <div className="space-y-4 pt-6 border-t border-border dark:border-midnight-700">
+        <div className="space-y-4 pt-6 border-t border-slate-200 dark:border-slate-800">
           <div className="flex items-center justify-between">
-            <h2 className="text-lg font-bold flex items-center gap-2 text-foreground dark:text-white">
+            <h2 className="text-lg font-bold flex items-center gap-2 text-slate-900 dark:text-white">
               <Building2 className="w-5 h-5 text-orange-500" /> Target Company & Compensation
             </h2>
-            <span className="text-xs font-semibold text-text-muted">Optional Context</span>
+            <span className="text-xs font-semibold text-slate-500 dark:text-slate-400">Optional Context</span>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {/* Target Company */}
             <div>
-              <label className="block text-xs font-bold uppercase tracking-wider text-text-muted mb-1.5">
+              <label className="block text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-1.5">
                 Target Company Name
               </label>
               <input
@@ -320,27 +320,27 @@ export default function InterviewSetupPage() {
                 value={targetCompany}
                 onChange={(e) => setTargetCompany(e.target.value)}
                 placeholder="E.g., Stripe, Google, Razorpay, Swiggy..."
-                className="w-full bg-bg-primary dark:bg-midnight-900 border border-border dark:border-midnight-600 rounded-xl px-4 py-2.5 text-sm font-medium focus:outline-none focus:border-orange-500"
+                className="w-full bg-slate-50 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 rounded-xl px-4 py-2.5 text-sm font-medium text-slate-900 dark:text-white placeholder:text-slate-400 focus:outline-none focus:border-orange-500"
               />
-              <p className="text-[11px] text-text-muted mt-1.5 flex items-center gap-1">
-                <Info className="w-3 h-3 shrink-0 text-text-muted" />
+              <p className="text-[11px] text-slate-500 dark:text-slate-400 mt-1.5 flex items-center gap-1">
+                <Info className="w-3 h-3 shrink-0 text-slate-400" />
                 Independent practice simulation. Not an official company question bank.
               </p>
             </div>
 
             {/* Expected Compensation */}
             <div>
-              <label className="block text-xs font-bold uppercase tracking-wider text-text-muted mb-1.5">
+              <label className="block text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-1.5">
                 Expected Annual Compensation
               </label>
               <div className="flex gap-2">
                 <select
                   value={compensationCurrency}
                   onChange={(e) => setCompensationCurrency(e.target.value as "INR" | "USD")}
-                  className="bg-bg-primary dark:bg-midnight-900 border border-border dark:border-midnight-600 rounded-xl px-3 py-2.5 text-xs font-bold"
+                  className="bg-slate-50 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 rounded-xl px-3 py-2.5 text-xs font-bold text-slate-900 dark:text-white"
                 >
-                  <option value="INR">INR (LPA)</option>
-                  <option value="USD">USD ($/yr)</option>
+                  <option value="INR" className="text-slate-900 bg-white dark:bg-slate-900 dark:text-white">INR (LPA)</option>
+                  <option value="USD" className="text-slate-900 bg-white dark:bg-slate-900 dark:text-white">USD ($/yr)</option>
                 </select>
                 <div className="relative flex-1">
                   <input
@@ -348,11 +348,11 @@ export default function InterviewSetupPage() {
                     value={compensationAmount}
                     onChange={(e) => setCompensationAmount(e.target.value)}
                     placeholder={compensationCurrency === "INR" ? "E.g., 18 LPA" : "E.g., 140,000"}
-                    className="w-full bg-bg-primary dark:bg-midnight-900 border border-border dark:border-midnight-600 rounded-xl px-4 py-2.5 text-sm font-semibold focus:outline-none focus:border-orange-500"
+                    className="w-full bg-slate-50 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 rounded-xl px-4 py-2.5 text-sm font-semibold text-slate-900 dark:text-white placeholder:text-slate-400 focus:outline-none focus:border-orange-500"
                   />
                 </div>
               </div>
-              <p className="text-[11px] text-text-muted mt-1.5">
+              <p className="text-[11px] text-slate-500 dark:text-slate-400 mt-1.5">
                 Compensation is used purely for career context; never used to infer seniority.
               </p>
             </div>
@@ -360,15 +360,15 @@ export default function InterviewSetupPage() {
         </div>
 
         {/* Section 4: Skills, Persona & Interaction Mode */}
-        <div className="space-y-4 pt-6 border-t border-border dark:border-midnight-700">
+        <div className="space-y-4 pt-6 border-t border-slate-200 dark:border-slate-800">
           <div className="flex items-center justify-between">
-            <h2 className="text-lg font-bold flex items-center gap-2 text-foreground dark:text-white">
+            <h2 className="text-lg font-bold flex items-center gap-2 text-slate-900 dark:text-white">
               <Bot className="w-5 h-5 text-orange-500" /> Persona & Interaction Mode
             </h2>
             <button
               type="button"
               onClick={handleImportProfile}
-              className="text-xs font-bold text-orange-500 hover:text-orange-400 flex items-center gap-1 transition-colors"
+              className="text-xs font-bold text-orange-600 hover:text-orange-500 flex items-center gap-1 transition-colors"
             >
               <UserCheck className="w-3.5 h-3.5" /> Auto-fill from Profile
             </button>
@@ -376,7 +376,7 @@ export default function InterviewSetupPage() {
 
           {/* Persona Cards */}
           <div>
-            <label className="block text-xs font-bold uppercase tracking-wider text-text-muted mb-2">
+            <label className="block text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-2">
               Interviewer Persona
             </label>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
@@ -386,15 +386,15 @@ export default function InterviewSetupPage() {
                   onClick={() => setPersona(p.id)}
                   className={`p-4 rounded-2xl border cursor-pointer transition-all ${
                     persona === p.id
-                      ? "bg-orange-500/10 border-orange-500 shadow-md"
-                      : "bg-bg-primary dark:bg-midnight-900 border-border dark:border-midnight-700 hover:border-neutral-500"
+                      ? "bg-orange-50/80 dark:bg-orange-500/10 border-2 border-orange-500 shadow-md"
+                      : "bg-slate-50 dark:bg-slate-800/80 border-slate-200 dark:border-slate-700 hover:border-slate-400"
                   }`}
                 >
                   <div className="flex items-center justify-between mb-1">
-                    <span className="font-bold text-sm text-foreground dark:text-white">{p.title}</span>
+                    <span className={`font-bold text-sm ${persona === p.id ? "text-orange-950 dark:text-orange-200" : "text-slate-900 dark:text-white"}`}>{p.title}</span>
                     {persona === p.id && <CheckCircle2 className="w-4 h-4 text-orange-500" />}
                   </div>
-                  <p className="text-xs text-text-secondary dark:text-neutral-400">{p.desc}</p>
+                  <p className={`text-xs ${persona === p.id ? "text-orange-900/80 dark:text-orange-300" : "text-slate-600 dark:text-slate-300"}`}>{p.desc}</p>
                 </div>
               ))}
             </div>
@@ -403,7 +403,7 @@ export default function InterviewSetupPage() {
           {/* Interaction Mode & Camera */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-2">
             <div>
-              <label className="block text-xs font-bold uppercase tracking-wider text-text-muted mb-2">
+              <label className="block text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-2">
                 Primary Interaction Mode
               </label>
               <div className="grid grid-cols-2 gap-2">
@@ -413,7 +413,7 @@ export default function InterviewSetupPage() {
                   className={`p-3 rounded-xl border text-xs font-bold flex items-center justify-center gap-2 transition-all ${
                     interactionMode === "Voice interview"
                       ? "bg-emerald text-white border-emerald shadow-sm"
-                      : "bg-bg-primary dark:bg-midnight-900 border-border dark:border-midnight-700 text-text-secondary"
+                      : "bg-slate-50 dark:bg-slate-800/80 border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 hover:text-slate-900 dark:hover:text-white"
                   }`}
                 >
                   <Mic className="w-4 h-4" /> Spoken Voice
@@ -424,7 +424,7 @@ export default function InterviewSetupPage() {
                   className={`p-3 rounded-xl border text-xs font-bold flex items-center justify-center gap-2 transition-all ${
                     interactionMode === "Text interview"
                       ? "bg-sky text-white border-sky shadow-sm"
-                      : "bg-bg-primary dark:bg-midnight-900 border-border dark:border-midnight-700 text-text-secondary"
+                      : "bg-slate-50 dark:bg-slate-800/80 border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 hover:text-slate-900 dark:hover:text-white"
                   }`}
                 >
                   Text Mode Fallback
@@ -433,15 +433,15 @@ export default function InterviewSetupPage() {
             </div>
 
             <div>
-              <label className="block text-xs font-bold uppercase tracking-wider text-text-muted mb-2">
+              <label className="block text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-2">
                 Camera Access (Optional)
               </label>
               <div
                 onClick={() => setEnableCamera(!enableCamera)}
                 className={`p-3 rounded-xl border cursor-pointer flex items-center justify-between transition-colors ${
                   enableCamera
-                    ? "bg-sky/10 border-sky/30 text-sky-400"
-                    : "bg-bg-primary dark:bg-midnight-900 border-border dark:border-midnight-700 text-text-secondary"
+                    ? "bg-sky-50 dark:bg-sky-950/40 border-sky-300 dark:border-sky-700 text-sky-800 dark:text-sky-300"
+                    : "bg-slate-50 dark:bg-slate-800/80 border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300"
                 }`}
               >
                 <div className="flex items-center gap-2">
@@ -462,14 +462,14 @@ export default function InterviewSetupPage() {
 
           {/* Focus Skills */}
           <div className="pt-2">
-            <label className="block text-xs font-bold uppercase tracking-wider text-text-muted mb-1.5">
+            <label className="block text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-1.5">
               Focus Skills (Tags)
             </label>
             <div className="flex flex-wrap gap-2 mb-2">
               {skills.map((skill) => (
                 <span
                   key={skill}
-                  className="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-orange-500/10 border border-orange-500/20 text-orange-500 dark:text-orange-400 text-xs font-bold"
+                  className="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-orange-500/15 border border-orange-500/30 text-orange-700 dark:text-orange-400 text-xs font-bold"
                 >
                   {skill}
                   <button
@@ -494,12 +494,12 @@ export default function InterviewSetupPage() {
                   }
                 }}
                 placeholder="Add skill (e.g. Next.js, Redux, PostgreSQL) & press Enter"
-                className="flex-1 bg-bg-primary dark:bg-midnight-900 border border-border dark:border-midnight-600 rounded-xl px-4 py-2 text-xs font-medium focus:outline-none focus:border-orange-500"
+                className="flex-1 bg-slate-50 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 rounded-xl px-4 py-2 text-xs font-medium text-slate-900 dark:text-white placeholder:text-slate-400 focus:outline-none focus:border-orange-500"
               />
               <button
                 type="button"
                 onClick={handleAddSkill}
-                className="px-4 py-2 bg-midnight-700 hover:bg-midnight-600 rounded-xl text-xs font-bold border border-midnight-600"
+                className="px-4 py-2 bg-slate-800 hover:bg-slate-700 text-white rounded-xl text-xs font-bold border border-slate-700 transition-colors"
               >
                 Add Tag
               </button>
@@ -508,11 +508,11 @@ export default function InterviewSetupPage() {
         </div>
 
         {/* Scoring Transparency Notice */}
-        <div className="p-4 rounded-2xl bg-midnight-900/60 border border-midnight-700 flex items-start gap-3">
-          <ShieldAlert className="w-5 h-5 text-amber-400 shrink-0 mt-0.5" />
-          <div className="text-xs text-neutral-300 space-y-1">
-            <p className="font-bold text-white">Coaching Fairness & Transparency Guarantee</p>
-            <p className="text-neutral-400 leading-relaxed">
+        <div className="p-4 rounded-2xl bg-slate-100 dark:bg-slate-850 border border-slate-200 dark:border-slate-700 flex items-start gap-3">
+          <ShieldAlert className="w-5 h-5 text-amber-500 shrink-0 mt-0.5" />
+          <div className="text-xs space-y-1">
+            <p className="font-bold text-slate-900 dark:text-white">Coaching Fairness & Transparency Guarantee</p>
+            <p className="text-slate-600 dark:text-slate-300 leading-relaxed">
               Arena scores evaluate technical accuracy, communication clarity, problem-solving structure, and follow-up depth. We strictly never assess accents, appearance, video, or perceived emotion. Practice scores are 100% private and do not influence your public Apta leaderboard rank.
             </p>
           </div>

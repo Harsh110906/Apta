@@ -23,7 +23,7 @@ export function InterviewerAvatar({
   onReplayQuestion,
 }: InterviewerAvatarProps) {
   return (
-    <div className="relative flex flex-col items-center justify-center p-6 bg-midnight-800/90 rounded-2xl border border-midnight-600 shadow-xl overflow-hidden text-center backdrop-blur-md">
+    <div className="relative flex flex-col items-center justify-center p-6 bg-[#0f172a] text-white rounded-2xl border border-slate-700 shadow-xl overflow-hidden text-center backdrop-blur-md">
       {/* Background glow when active */}
       <div
         className={`absolute inset-0 bg-radial-glow transition-opacity duration-700 pointer-events-none ${
@@ -54,7 +54,7 @@ export function InterviewerAvatar({
         <button
           onClick={onReplayQuestion}
           title="Replay Question Audio"
-          className="p-1.5 rounded-lg bg-midnight-700/80 hover:bg-midnight-600 text-neutral-300 hover:text-white transition-colors border border-midnight-600 text-xs flex items-center gap-1"
+          className="p-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 hover:text-white transition-colors border border-slate-700 text-xs flex items-center gap-1"
         >
           <RotateCcw className="w-3.5 h-3.5" />
           <span className="hidden sm:inline">Replay</span>
@@ -62,9 +62,9 @@ export function InterviewerAvatar({
         <button
           onClick={onToggleMute}
           title={isMuted ? "Unmute Audio" : "Mute Audio"}
-          className="p-1.5 rounded-lg bg-midnight-700/80 hover:bg-midnight-600 text-neutral-300 hover:text-white transition-colors border border-midnight-600"
+          className="p-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 hover:text-white transition-colors border border-slate-700"
         >
-          {isMuted ? <VolumeX className="w-4 h-4 text-rose" /> : <Volume2 className="w-4 h-4" />}
+          {isMuted ? <VolumeX className="w-4 h-4 text-rose" /> : <Volume2 className="w-4 h-4 text-slate-200" />}
         </button>
       </div>
 
