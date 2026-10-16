@@ -6,10 +6,12 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "test": "node --experimental-strip-types --test src/tests/interviewArena.test.ts"
   },
   "dependencies": {
     "@monaco-editor/react": "^4.7.0",
+    "@swc/helpers": "^0.5.23",
     "clsx": "^2.1.1",
     "lucide-react": "^1.21.0",
     "next": "16.2.9",

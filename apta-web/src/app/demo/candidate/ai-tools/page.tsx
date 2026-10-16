@@ -1,13 +1,14 @@
 "use client";
 
+import Link from "next/link";
 import { useState } from "react";
 import { MotionWrapper } from "@/components/ui/MotionWrapper";
-import { Brain, FileText, MessageSquare, LineChart, Map, Bot, Upload, Loader2, Play, CheckCircle2, RefreshCw, Sparkles } from "lucide-react";
+import { Brain, FileText, MessageSquare, LineChart, Map, Bot, Upload, Loader2, Play, CheckCircle2, RefreshCw, Sparkles, ArrowRight, History, Volume2, ShieldCheck } from "lucide-react";
 
 // Mock Tools Data
 const TOOLS = [
   { id: "resume", name: "AI Resume Analyzer", tagline: "Strengthen your resume with smart feedback", icon: FileText, interactive: true, color: "text-sky" },
-  { id: "interview", name: "AI Interview Coach", tagline: "Get interview ready with AI Coach", icon: MessageSquare, interactive: true, color: "text-emerald" },
+  { id: "interview", name: "AI Interview Coach", tagline: "Apta Interview Arena: Full virtual mock interviews with voice and evidence-backed coaching", icon: MessageSquare, interactive: true, color: "text-emerald" },
   { id: "skillgap", name: "Skill Gap Analyzer", tagline: "Find your skill gaps before recruiters do", icon: LineChart, interactive: true, color: "text-orange-500" },
   { id: "roadmap", name: "Roadmap Generator", tagline: "Turn weak performance into a focused learning plan", icon: Map, interactive: false, color: "text-purple-500" },
   { id: "quiz", name: "Quiz Performance Insights", tagline: "Deep dive into your daily test performance", icon: Brain, interactive: false, color: "text-gold" },
@@ -84,73 +85,116 @@ export default function AIToolsHub() {
      )
   }
 
-  // Render Interview Coach
+  // Render Interview Coach — Connected to Apta Interview Arena
   const renderInterviewCoach = () => {
-    if (interviewState === 'intro') {
-       return (
-         <div className="text-center p-12 bg-bg-secondary border border-border rounded-2xl shadow-sm">
-           <div className="w-20 h-20 bg-emerald/10 rounded-full flex items-center justify-center mx-auto mb-6">
-             <Bot className="w-10 h-10 text-emerald" />
-           </div>
-           <h3 className="font-bold text-2xl mb-3">Technical Interview Simulation</h3>
-           <p className="text-text-secondary mb-8 max-w-md mx-auto leading-relaxed">Practice responding to technical behavioral questions in real-time. I'll evaluate your clarity, technical depth, and confidence.</p>
-           <button onClick={() => setInterviewState('question')} className="bg-emerald text-white px-8 py-3 rounded-xl font-bold hover:bg-emerald/90 shadow-glow flex items-center justify-center gap-2 mx-auto transition-transform hover:scale-105">
-             <Play className="w-5 h-5 fill-current" /> Start Mock Interview
-           </button>
-         </div>
-       )
-    }
-    if (interviewState === 'question') {
-       return (
-         <div className="animate-fade-in bg-bg-secondary border border-border rounded-2xl overflow-hidden flex flex-col h-[450px] shadow-sm">
-           <div className="p-6 bg-bg-tertiary border-b border-border flex items-start gap-4">
-             <div className="w-12 h-12 rounded-full bg-emerald/20 flex items-center justify-center shrink-0 border border-emerald/30 shadow-inner">
-               <Bot className="w-6 h-6 text-emerald" />
-             </div>
-             <div>
-               <p className="font-bold mb-1 text-emerald">AI Coach</p>
-               <p className="text-sm text-foreground font-medium leading-relaxed">"Can you describe a time when you had to optimize the performance of a complex React application? What was your approach and what were the results?"</p>
-             </div>
-           </div>
-           <div className="p-6 flex-1 flex flex-col bg-bg-primary">
-             <textarea 
-               value={answer}
-               onChange={e => setAnswer(e.target.value)}
-               placeholder="Type your response here as if you are speaking..."
-               className="w-full flex-1 bg-bg-secondary border border-border rounded-xl p-4 text-sm font-medium outline-none focus:border-emerald resize-none mb-4 shadow-inner"
-             />
-             <div className="flex justify-end gap-3">
-               <button onClick={() => setInterviewState('intro')} className="px-6 py-2 rounded-lg font-bold text-text-muted hover:text-foreground transition-colors">Abort</button>
-               <button onClick={() => setInterviewState('feedback')} disabled={!answer.trim()} className="bg-emerald text-white px-6 py-2 rounded-lg font-bold disabled:opacity-50 hover:bg-emerald/90 shadow-sm transition-colors">Submit Response</button>
-             </div>
-           </div>
-         </div>
-       )
-    }
     return (
-      <div className="animate-fade-in space-y-6">
-         <div className="bg-bg-secondary p-5 rounded-xl border border-border shadow-sm">
-           <p className="font-bold text-xs mb-2 text-text-muted uppercase tracking-wider">Your Response recorded</p>
-           <p className="text-sm font-medium text-text-secondary leading-relaxed">"{answer}"</p>
-         </div>
-         <div className="bg-emerald/5 border border-emerald/20 rounded-xl p-6 shadow-sm relative overflow-hidden">
-           <div className="absolute top-0 right-0 w-32 h-32 bg-emerald/10 rounded-bl-full" />
-           <h3 className="font-bold text-lg text-emerald flex items-center gap-2 mb-4 relative z-10"><MessageSquare className="w-5 h-5" /> Coach Evaluation</h3>
-           <div className="space-y-4 text-sm relative z-10">
-             <div className="bg-bg-primary p-4 rounded-lg border border-border/50">
-               <p className="mb-1"><strong className="text-foreground">Clarity & Structure:</strong> <span className="text-emerald font-bold">Good</span></p>
-               <p className="text-text-secondary">Your point is clear, but could be more structured. Try explicitly using the STAR method (Situation, Task, Action, Result) to format your answer.</p>
-             </div>
-             <div className="bg-bg-primary p-4 rounded-lg border border-border/50">
-               <p className="mb-1"><strong className="text-foreground">Technical Depth:</strong> <span className="text-orange-500 font-bold">Needs Detail</span></p>
-               <p className="text-text-secondary">You mentioned memoization, but it would be stronger if you specified <code className="bg-bg-secondary px-1 py-0.5 rounded">useMemo</code> vs <code className="bg-bg-secondary px-1 py-0.5 rounded">React.memo</code> and exactly how you measured the before/after renders.</p>
-             </div>
-           </div>
-           <button onClick={() => { setInterviewState('intro'); setAnswer(""); }} className="mt-6 bg-emerald text-white px-6 py-2.5 rounded-lg font-bold hover:bg-emerald/90 transition-colors shadow-sm relative z-10">Try Next Question</button>
-         </div>
+      <div className="space-y-6 animate-fade-in">
+        {/* Arena Featured Banner */}
+        <div className="p-8 md:p-10 bg-gradient-to-br from-midnight-800 to-midnight-900 border border-orange-500/30 rounded-3xl text-left relative overflow-hidden shadow-2xl">
+          <div className="absolute top-0 right-0 w-64 h-64 bg-radial-glow opacity-30 pointer-events-none" />
+          
+          <div className="relative z-10 max-w-2xl">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-orange-500/10 border border-orange-500/30 text-orange-500 text-xs font-bold mb-4">
+              <Sparkles className="w-3.5 h-3.5" /> Full Virtual Experience
+            </div>
+            <h3 className="text-2xl md:text-3xl font-extrabold text-white mb-3">
+              Apta Interview Arena
+            </h3>
+            <p className="text-neutral-300 text-sm md:text-base leading-relaxed mb-6">
+              Enter an immersive, focused virtual interview room with our AI Interviewer. Configure your target company, expected compensation (LPA), and interview difficulty. Practice speaking aloud with live voice recognition and receive an evidence-backed coaching report.
+            </p>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-8 text-xs text-neutral-300">
+              <div className="flex items-center gap-2">
+                <Volume2 className="w-4 h-4 text-orange-400" />
+                <span>Spoken audio questions & voice input</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <Bot className="w-4 h-4 text-emerald" />
+                <span>Dynamic follow-up probing</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <CheckCircle2 className="w-4 h-4 text-sky" />
+                <span>Competency & trade-off rubrics</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <ShieldCheck className="w-4 h-4 text-amber-400" />
+                <span>100% private practice coaching</span>
+              </div>
+            </div>
+
+            <div className="flex flex-wrap items-center gap-4">
+              <Link
+                href="/demo/candidate/interview"
+                className="px-7 py-3 rounded-xl bg-orange-500 hover:bg-orange-600 text-white font-bold text-sm shadow-glow flex items-center gap-2 transition-transform hover:scale-105 active:scale-95"
+              >
+                Launch Interview Arena <ArrowRight className="w-4 h-4" />
+              </Link>
+              <Link
+                href="/demo/candidate/interview/history"
+                className="px-5 py-3 rounded-xl bg-midnight-700 hover:bg-midnight-600 text-neutral-200 font-bold text-xs border border-midnight-600 transition-colors flex items-center gap-2"
+              >
+                <History className="w-4 h-4 text-orange-400" /> View Past Reports
+              </Link>
+            </div>
+          </div>
+        </div>
+
+        {/* Quick-Launch Track Cards */}
+        <div>
+          <h4 className="font-bold text-base mb-3 text-foreground flex items-center gap-2">
+            <Sparkles className="w-4 h-4 text-orange-500" /> Recommended Interview Tracks
+          </h4>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+            <Link
+              href="/demo/candidate/interview"
+              className="p-5 bg-bg-secondary border border-border rounded-2xl hover:border-orange-500/50 hover:-translate-y-0.5 transition-all block group"
+            >
+              <div className="font-bold text-sm text-foreground mb-1 group-hover:text-orange-500 transition-colors">
+                Frontend Architecture
+              </div>
+              <p className="text-xs text-text-secondary leading-relaxed mb-3">
+                React rendering bottlenecks, INP optimization, and state management.
+              </p>
+              <span className="text-xs font-bold text-orange-500 flex items-center gap-1">
+                Configure & Start &rarr;
+              </span>
+            </Link>
+
+            <Link
+              href="/demo/candidate/interview"
+              className="p-5 bg-bg-secondary border border-border rounded-2xl hover:border-orange-500/50 hover:-translate-y-0.5 transition-all block group"
+            >
+              <div className="font-bold text-sm text-foreground mb-1 group-hover:text-orange-500 transition-colors">
+                Backend & Distributed
+              </div>
+              <p className="text-xs text-text-secondary leading-relaxed mb-3">
+                Idempotency, database indexing, and cache stampede prevention.
+              </p>
+              <span className="text-xs font-bold text-orange-500 flex items-center gap-1">
+                Configure & Start &rarr;
+              </span>
+            </Link>
+
+            <Link
+              href="/demo/candidate/interview"
+              className="p-5 bg-bg-secondary border border-border rounded-2xl hover:border-orange-500/50 hover:-translate-y-0.5 transition-all block group"
+            >
+              <div className="font-bold text-sm text-foreground mb-1 group-hover:text-orange-500 transition-colors">
+                HR & Behavioral
+              </div>
+              <p className="text-xs text-text-secondary leading-relaxed mb-3">
+                Conflict resolution, navigating ambiguity, and ownership (STAR).
+              </p>
+              <span className="text-xs font-bold text-orange-500 flex items-center gap-1">
+                Configure & Start &rarr;
+              </span>
+            </Link>
+          </div>
+        </div>
       </div>
-    )
-  }
+    );
+  };
 
   const renderSkillGap = () => {
      if (skillGapState === 'idle') {
